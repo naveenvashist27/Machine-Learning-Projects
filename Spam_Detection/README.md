@@ -104,22 +104,21 @@ Confusion Matrix
 
 ### Home Page
 
-![Home](screenshots/home.png)
+![Home](screenshots/Screenshot%202026-08-02%20172410.png)
 
 ---
 
 ### Spam Prediction
 
-![Spam](screenshots/spam_prediction.png)
+![Spam](screenshots/Screenshot%202026-08-02%20174926.png)
 
 ---
 
 ### Ham Prediction
 
-![Ham](screenshots/ham_prediction.png)
+![Ham](screenshots/Screenshot%202026-08-02%20175730.png)
 
 ---
-
 
 ## ▶️ Run Locally
 
