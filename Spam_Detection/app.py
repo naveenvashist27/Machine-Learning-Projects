@@ -1,7 +1,8 @@
 import streamlit as st
+from pathlib import Path
 import pickle
 import nltk
-
+BASE_DIR = Path(__file__).parent
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -23,16 +24,10 @@ st.set_page_config(
 nltk.download("punkt", quiet=True)
 nltk.download("stopwords", quiet=True)
 
-# -----------------------------
-# Load trained ML model
-# -----------------------------
-with open("spam_model.pkl", "rb") as file:
+with open(BASE_DIR / "spam_model.pkl", "rb") as file:
     model = pickle.load(file)
 
-# -----------------------------
-# Load TF-IDF Vectorizer
-# -----------------------------
-with open("vectorizer.pkl", "rb") as file:
+with open(BASE_DIR / "vectorizer.pkl", "rb") as file:
     vectorizer = pickle.load(file)
 
 # -----------------------------
