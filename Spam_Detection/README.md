@@ -102,13 +102,25 @@ Confusion Matrix
 
 ## 📸 Screenshots
 
-
+### Home Page
 
 ![Home](screenshots/home.png)
 
+---
+
+### Spam Prediction
+
 ![Spam](screenshots/spam_prediction.png)
 
+---
+
+### Ham Prediction
+
 ![Ham](screenshots/ham_prediction.png)
+
+---
+
+
 ## ▶️ Run Locally
 
 Clone the repository
