@@ -1,5 +1,9 @@
 # 📩 Spam SMS Detection using Machine Learning
 
+## 🌐 Live Demo
+
+https://spam-sms-detector-naveen.streamlit.app/
+
 ## 📌 Project Overview
 
 This project detects whether an SMS message is **Spam** or **Ham (Normal Message)** using Machine Learning.
