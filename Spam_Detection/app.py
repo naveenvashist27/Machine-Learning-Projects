@@ -2,25 +2,27 @@ import streamlit as st
 from pathlib import Path
 import pickle
 import nltk
-BASE_DIR = Path(__file__).parent
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
+BASE_DIR = Path(__file__).parent
 
-# -----------------------------
-# Page Configuration
-# Must be the first Streamlit command
-# -----------------------------
 st.set_page_config(
     page_title="Spam SMS Detector",
     page_icon="📩",
     layout="centered"
 )
 
-# -----------------------------
-# Download NLTK resources
-# Downloads only if not already installed
-# -----------------------------
+# Cached so it downloads cleanly on startup
+
+@st.cache_resource
+def load_nltk_resources():
+    nltk.download("punkt", quiet=True)
+    nltk.download("punkt_tab", quiet=True)
+    nltk.download("stopwords", quiet=True)
+
+load_nltk_resources()
+
 nltk.download("punkt", quiet=True)
 nltk.download("stopwords", quiet=True)
 
@@ -84,9 +86,6 @@ Text Processing:
 """
 )
 
-# -----------------------------
-# Main UI
-# -----------------------------
 st.title("📩 Spam SMS Detector")
 
 st.markdown(
@@ -103,9 +102,8 @@ message = st.text_area(
     placeholder="Example: Congratulations! You won ₹50,000..."
 )
 
-# -----------------------------
 # Predict Button
-# -----------------------------
+
 if st.button("🔍 Predict"):
 
     if message.strip() == "":
