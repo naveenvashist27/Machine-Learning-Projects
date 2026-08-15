@@ -11,28 +11,27 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 
-# ---------------------------------------------------------
 # Download required NLTK resources (runs only if needed)
 # ---------------------------------------------------------
 nltk.download("punkt") #without punkt word_tokenize() does not work 
 nltk.download("stopwords")
-# ---------------------------------------------------------
+
 # Load the saved Machine Learning model
 # ---------------------------------------------------------
 with open("spam_model.pkl", "rb") as file:
     model = pickle.load(file)
-# ---------------------------------------------------------
+
 # Load the saved TF-IDF Vectorizer
 # ---------------------------------------------------------
 with open("vectorizer.pkl", "rb") as file:
     vectorizer = pickle.load(file)
-# ---------------------------------------------------------
+
 # Initialize NLP tools
 # ---------------------------------------------------------
 stemmer = PorterStemmer()
 # Load stopwords only once
 stop_words = set(stopwords.words("english"))
-# ---------------------------------------------------------
+
 # Text Preprocessing Function
 # This MUST be the same as used while training.
 # ---------------------------------------------------------
@@ -53,26 +52,25 @@ def preprocess(text):
                 cleaned_words.append(word)
     return " ".join(cleaned_words)
 
-# ---------------------------------------------------------
+
 # Take user input
 # ---------------------------------------------------------
 message = input("Enter your SMS : ")
-# ---------------------------------------------------------
+
 # Preprocess the message
 # ---------------------------------------------------------
 processed_message = preprocess(message)
-# ---------------------------------------------------------
+
 # Convert text into TF-IDF features
 # ---------------------------------------------------------
 vector = vectorizer.transform([processed_message])
-# ---------------------------------------------------------
+
 # Predict
 # ---------------------------------------------------------
 prediction = model.predict(vector)
-# ---------------------------------------------------------
+
 # Display Result
 # ---------------------------------------------------------
-
 if prediction[0] == 1:
     print("\n🚨 This is a SPAM message.")
 else:
